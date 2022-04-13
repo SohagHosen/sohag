@@ -15,7 +15,7 @@ export const ColorModeContext = React.createContext({
 });
 
 export default function MyApp(props) {
-  const [mode, setMode] = React.useState("light");
+  const [mode, setMode] = React.useState("dark");
   const colorMode = React.useMemo(
     () => ({
       // The dark mode switch would invoke this method

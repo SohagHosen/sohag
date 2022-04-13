@@ -3,7 +3,13 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import { Avatar, Button, Container, Typography } from "@mui/material";
+import {
+  Avatar,
+  Button,
+  Container,
+  CssBaseline,
+  Typography,
+} from "@mui/material";
 import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
@@ -18,40 +24,39 @@ const Navbar = () => {
   const colorMode = React.useContext(ColorModeContext);
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ boxShadow: 0 }}>
-        <Container maxWidth="lg">
-          <Toolbar>
-            <Link href="/">
-              <Image src={logo} height="40" width="40" />
-            </Link>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                flexGrow: 1,
-                justifyContent: "flex-end",
-              }}
+      <CssBaseline />
+      <AppBar position="static" elevation={0}>
+        <Toolbar>
+          <Link href="/">
+            <Image src={logo} height="40" width="40" />
+          </Link>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              flexGrow: 1,
+              justifyContent: "flex-end",
+            }}
+          >
+            <NavTypography text="Home" />
+            <NavTypography text="About" />
+            <NavTypography text="Work" />
+            <NavTypography text="Contact" />
+            <IconButton
+              sx={{ mx: 1 }}
+              onClick={colorMode.toggleColorMode}
+              color="inherit"
             >
-              <NavTypography text="Home" />
-              <NavTypography text="About" />
-              <NavTypography text="Work" />
-              <NavTypography text="Contact" />
-              <IconButton
-                sx={{ mx: 1 }}
-                onClick={colorMode.toggleColorMode}
-                color="inherit"
-              >
-                {theme.palette.mode === "dark" ? (
-                  <Brightness7Icon />
-                ) : (
-                  <Brightness4Icon />
-                )}
-              </IconButton>
+              {theme.palette.mode === "dark" ? (
+                <Brightness7Icon />
+              ) : (
+                <Brightness4Icon />
+              )}
+            </IconButton>
 
-              <Avatar alt="Sohag" src={avatar.src} />
-            </Box>
-          </Toolbar>
-        </Container>
+            <Avatar alt="Sohag" src={avatar.src} />
+          </Box>
+        </Toolbar>
       </AppBar>
     </Box>
   );
